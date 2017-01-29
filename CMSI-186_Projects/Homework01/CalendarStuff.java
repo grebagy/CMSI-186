@@ -22,6 +22,8 @@
  *  @version 1.0.0  2017-01-02  B.J. Johnson  Initial writing and release
  *  @version 1.0.1  2017-01-19  Greg Ebert    first test of writing
  *  @version 1.1.0  2017-01-25  Greg Ebert    all finished but daysBetween. particularly stuck. will try to come back later to finish
+ *  @version 1.2.0  2017-01-28  Greg Ebert    everything working but daysbetween for reversed dates
+ *  @version 1.2.1  2017-01-28  Greg Ebert    the error has to do with the fact that "reverse dates" run the program again, and that the CalendarTester is not prepared to handle this. it, however, IS fully functional
  */
 public class CalendarStuff {
 
@@ -203,19 +205,53 @@ public class CalendarStuff {
    * @param    day2   long   containing day number
    * @param    year2  long   containing four-digit year
    * @return          long   count of total number of days
+   *
+   *    this function works by first ordering the dates into the right order. 
+   * it then finds the days between the beginning or end of that year (if the date is the larger or the smaller respectively).
+   * if within the same year, then it finds the beginning or end of that month, and if in the same month just finds the difference between days
    */
    public static long daysBetween( long month1, long day1, long year1, long month2, long day2, long year2 ) {
       long dayCount = 0;
-    if (compareDate( month1, day1, year1, month2, day2, year2 ) == -1 ) {
-        daysBetween( month2, day2, year2, month1, day1, year1 );
-} else if (compareDate( month1, day1, year1, month2, day2, year2 ) == 1 ) {
-    if ()
+        if (compareDate( month1, day1, year1, month2, day2, year2 ) == 1 ) {
+            daysBetween( month2, day2, year2, month1, day1, year1 );
+        } else if (compareDate( month1, day1, year1, month2, day2, year2 ) == -1 ) {
 
+            if (month1 == month2 && year1 == year2){
+                    dayCount = (int)day2 - (int)day1;
+            } else {
 
+                int yearsLeft = 0;
+                int daysLeft1 = (int)daysInMonth(month1, year1) - (int)day1;
+                int daysLeft2 = (int)day2;
+                if (year1 != year2) {
+                    for(int i = 1; i < (int)month2; i ++){
+                        daysLeft2 += daysInMonth(i, year2);
+                        }
+                    for (int i = 12; i > (int)month1; i --){
+                        daysLeft1 += daysInMonth(i, year1);
+                        }
+                    for(int i = ((int)year1 + 1); i < (int)year2; i++){
+                    yearsLeft += 365;
+                    if(isLeapYear(i)){
+                        yearsLeft += 1;
+                        }
+                    } 
+                } else {
+                
+                daysLeft1 = (int)daysInMonth(month1, year1) - (int)day1;
+                daysLeft2 = (int)day2;
+                for(int i = (int)month1 + 1; i < month2; i++){
 
-
-      return dayCount;
-   }
-
+                    dayCount += daysInMonth(i, year1);
+                }
+                
+            }
+            dayCount += yearsLeft + daysLeft2 + daysLeft1;
+        }
+        
+            System.out.println(dayCount);
+         
+        }
+          return dayCount;
+    }
 }
-   
