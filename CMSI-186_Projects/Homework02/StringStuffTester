@@ -1,0 +1,52 @@
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *  File name     :  StringStuffTester.java
+ *  Purpose       :  A file full of stuff to do with the Java String class
+ *  Author        :  B.J. Johnson
+ *  Date          :  2017-01-19
+ *  Description   :  This file presents a bunch of String-style helper methods.  Although pretty much
+ *                   any and every thing you'd want to do with Strings is already made for you in the
+ *                   Jave String class, this exercise gives you a chance to do it yourself [DIY] for some
+ *                   of it and get some experience with designing code that you can then check out using
+ *                   the real Java String methods [if you want]
+ *  Notes         :  None
+ *  Warnings      :  None
+ *  Exceptions    :  None
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *  Revision History
+ *  ----------------
+ *            Rev      Date     Modified by:  Reason for change/modification
+ *           -----  ----------  ------------  -----------------------------------------------------------
+ *  @version 1.0.0  2017-02-02  greg ebert    initial writing
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  public class StringStuffTester {
+      public static void main( String args [] ) {
+
+            String vowel1 = new String( "dft stab ppl" );
+            String vowel2 = new String( "hEppy" );
+            String vowel3 = new String( "chclt rn sm sty dry nd thrs fl th pn" );
+            String vowel4 = new String( "dft stib ppl" );
+            String pal1 = new String( "I" );
+            String pal2 = new String( "chocolate" );
+            String pal3 = new String( "aba" );
+            String pal4 = new String( "amanaplanacanalpanama" );
+            String pal5 = new String( "abba" );
+            String pal6 = new String( "a man a plan a canal panama" );
+            System.out.println( "should be true:" + StringStuff.containsVowel( vowel1 ) );
+            System.out.println( "should be true:" + StringStuff.containsVowel( vowel2 ) );
+            System.out.println( "should be false:" + StringStuff.containsVowel( vowel3 ) );
+            System.out.println( "should be true:" + StringStuff.containsVowel( vowel4 ) );
+            System.out.println( "should be true:" + StringStuff.isPalindrome( pal1 ) );
+            System.out.println( "should be true:" + StringStuff.isPalindrome( pal2 ) );
+            System.out.println( "should be false:" + StringStuff.isPalindrome( pal3 ) );
+            System.out.println( "should be true:" + StringStuff.isPalindrome( pal4 ) );
+            System.out.println( "should be true:" + StringStuff.isPalindrome( pal5 ) );
+            System.out.println( "should be false:" + StringStuff.isPalindrome( pal6 ) );
+            System.out.println( "evensOnly()        returns: " + StringStuff.evensOnly( "REHEARSALSZ" ) );
+            System.out.println( "evensOnly()        returns: " + StringStuff.evensOnly( "REhearSALsz" ) );
+            System.out.println( "evensOnlyNoDupes() returns: " + StringStuff.evensOnlyNoDupes( "REhearSALsz" ) );
+            System.out.println( "oddsOnly()         returns: " + StringStuff.oddsOnly( "xylophones" ) );
+            System.out.println( "oddsOnly()         returns: " + StringStuff.oddsOnly( "XYloPHonES" ) );
+            System.out.println( "oddsOnlyNoDupes()  returns: " + StringStuff.oddsOnlyNoDupes( "XYloPHonES" ) );
+            System.out.println( "reverse()          returns: " + StringStuff.reverse( "REhearSALSZ" ) );
+      }
+   }
