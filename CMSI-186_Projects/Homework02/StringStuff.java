@@ -19,6 +19,7 @@
  *  @version 1.0.0  2017-01-19  B.J. Johnson  Initial writing and release
  *  @version 1.1.0  2017-01-22  B.J. Johnson  Fill in methods to make the program actually work
  *  @version 1.1.1  2017-02-02  greg ebert    starting to write
+ *  @version 1.2.0  2017-02-08  Greg Ebert    finished writing
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 import java.util.Set;
 import java.util.LinkedHashSet;
@@ -35,14 +36,13 @@ public class StringStuff {
    */
    public static boolean containsVowel( String s ) {
       String vowels = "aeiouAEIOU";
-   //   for (int i = 0; i < s.length(); i++) {
-   //      if ( vowels.contains(s.charAt(i)) == true ) {
-   //         return true;
-   //      } else {
-   //         return false;
-   //      }
-   //   }
-         return true;
+      for (int i = 0; i < s.length(); i++) {
+         if ( vowels.contains(Character.toString(s.charAt(i))) == true ) {
+            return true;
+         }
+         
+      }
+      return false;
    }
 
   /**
@@ -56,20 +56,12 @@ public class StringStuff {
    public static boolean isPalindrome( String s ) {
       StringBuilder builder = new StringBuilder(s);
       String reverse = new StringBuilder(s).reverse().toString();
-
       if (s.equals( reverse)) {
          return true;
       } else {
          return false;
       }
    }
-
-
-  /**
-   *determine value of character
-   */
-
-
 
   /**
    * Method to return the characters in a string that correspond to the &quot;EVEN&quot; index
@@ -80,8 +72,15 @@ public class StringStuff {
    * @return  String containing the &quot;even&quot; letters from the input
    */
    public static String evensOnly( String s ) {
-      for (int i = 0; i < )
-      return new String( "HJHJHJ" );
+      StringBuilder output = new StringBuilder();
+      for (int i = 0; i < s.length(); i++) {
+         if (( (int)s.charAt(i) % 2 ) == 0 ) {
+            output.append(s.charAt(i));
+         } else {
+            continue;
+         }
+      }
+      return output.toString();
    }
 
   /**
@@ -93,9 +92,17 @@ public class StringStuff {
    * @return  String containing the &quot;odd&quot; letters from the input
    */
    public static String oddsOnly( String s ) {
-      return new String( "IKIKIK" );
+      StringBuilder output = new StringBuilder();
+      for (int i = 0; i < s.length(); i++) {
+         if (( (int)s.charAt(i) % 2 ) == 1 ) {
+            output.append(s.charAt(i));
+         } else {
+            continue;
+         }
+      }
+      return output.toString();
    }
-
+  
   /**
    * Method to return the characters in a string that correspond to the &quot;EVEN&quot; index
    * numbers of the alphabet, but with no duplicate characters in the resulting string.
@@ -104,7 +111,17 @@ public class StringStuff {
    * @return  String containing the &quot;even&quot; letters from the input without duplicates
    */
    public static String evensOnlyNoDupes( String s ) {
-      return new String( "HJ" );
+      StringBuilder output = new StringBuilder();
+      StringBuilder used = new StringBuilder();
+      for (int i = 0; i < s.length(); i++) {
+         if (( (int)s.charAt(i) % 2 ) == 0 ) {
+            if (used.toString().contains(Character.toString(s.charAt(i))) == false) {
+               used.append(s.charAt(i));
+               output.append(s.charAt(i));
+            }            
+         }
+      }
+      return output.toString();
    }
 
   /**
@@ -115,7 +132,17 @@ public class StringStuff {
    * @return  String containing the &quot;odd&quot; letters from the input without duplicates
    */
    public static String oddsOnlyNoDupes( String s ) {
-      return new String( "IK" );
+      StringBuilder output = new StringBuilder();
+      StringBuilder used = new StringBuilder();
+      for (int i = 0; i < s.length(); i++) {
+         if (( (int)s.charAt(i) % 2 ) == 1 ) {
+            if (used.toString().contains(Character.toString(s.charAt(i))) == false) {
+               used.append(s.charAt(i));
+               output.append(s.charAt(i));
+            }            
+         }
+      }
+      return output.toString();
    }
 
   /**
