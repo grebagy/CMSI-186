@@ -17,6 +17,7 @@
  *            Rev      Date     Modified by:  Reason for change/modification
  *           -----  ----------  ------------  -----------------------------------------------------------
  *  @version 1.0.0  2017-02-02  greg ebert    initial writing
+ *  @version 1.1.0  2017-02-08  Greg Ebert    finished writing
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   public class StringStuffTester {
       public static void main( String args [] ) {
@@ -31,13 +32,13 @@
             String pal4 = new String( "amanaplanacanalpanama" );
             String pal5 = new String( "abba" );
             String pal6 = new String( "a man a plan a canal panama" );
-            System.out.println( "should be true:" + StringStuff.containsVowel( vowel1 ) );
+            System.out.println( "should be true:" + StringStuff.containsVowel( vowel1 ) + "~~" );
             System.out.println( "should be true:" + StringStuff.containsVowel( vowel2 ) );
             System.out.println( "should be false:" + StringStuff.containsVowel( vowel3 ) );
             System.out.println( "should be true:" + StringStuff.containsVowel( vowel4 ) );
             System.out.println( "should be true:" + StringStuff.isPalindrome( pal1 ) );
-            System.out.println( "should be true:" + StringStuff.isPalindrome( pal2 ) );
-            System.out.println( "should be false:" + StringStuff.isPalindrome( pal3 ) );
+            System.out.println( "should be false:" + StringStuff.isPalindrome( pal2 ) );
+            System.out.println( "should be true:" + StringStuff.isPalindrome( pal3 ) );
             System.out.println( "should be true:" + StringStuff.isPalindrome( pal4 ) );
             System.out.println( "should be true:" + StringStuff.isPalindrome( pal5 ) );
             System.out.println( "should be false:" + StringStuff.isPalindrome( pal6 ) );
