@@ -16,7 +16,6 @@
  *            Rev      Date     Modified by:  Reason for change/modification
  *           -----  ----------  ------------  -----------------------------------------------------------
  *  @version 1.0.0  2017-02-28  Greg Ebert    Initial writing and release
- *  @version 2.0.0  2017-03-15  Greg Ebert    final release
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 public class ClockSolver {
@@ -25,7 +24,7 @@ public class ClockSolver {
    */
    private final double MAX_TIME_SLICE_IN_SECONDS  = 1800.00;
    private final double DEFAULT_TIME_SLICE_SECONDS = 60.0;
-   private final double EPSILON_VALUE              = 0.1;      // small value for double-precision comparisons
+   private final double EPSILON_VALUE              = 0.01;      // small value for double-precision comparisons
    double vari = EPSILON_VALUE;
   /**
    *  Constructor
@@ -67,7 +66,6 @@ public class ClockSolver {
    public static void main( String args[] ) {
       ClockSolver cs = new ClockSolver();
       Clock clock    = new Clock();
-      double[] timeValues = new double[3];
       cs.handleInitialArguments( args );
 
       System.out.println("Angle: " + clock.validateAngleArg(args[0]));
