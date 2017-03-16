@@ -16,8 +16,9 @@
  *           -----  ----------  ------------  -----------------------------------------------------------
  *  @version 1.0.0  2017-02-28  Greg Ebert    first writing. doesnt work
  *  @version 1.0.1  2017-03-14  Greg Ebert    Still going
- *  @version 2.0.0  2017-03-15  Greg Ebert    Final product
  */
+import java.text.DecimalFormat;
+
 public class Clock {
   /**
    *  Class field definintions go here
@@ -161,7 +162,8 @@ public class Clock {
    public String toString() {
       getHours();
       getMinutes();
-      return "[" + Integer.toString(hours) + ":" + Integer.toString(minutes) + ":" + Double.toString(seconds%60) + "]";
+      DecimalFormat df = new DecimalFormat("#0.00");
+      return "[" + hours + ":" + minutes + ":" + df.format(seconds%60) + "]";
    }
 
   /**
@@ -182,8 +184,6 @@ public class Clock {
       System.out.print( "      sending '  0 degrees', expecting double value   0.0" );
       try { System.out.println( (0.0 == clock.validateAngleArg( "0.0" )) ? " - got a   0.0" : " - got " + clock.angle ); }
       catch( Exception e ) { System.out.println ( " - Exception thrown: " + e.toString() ); }
-
-
       System.out.println( "  Creating a new clock2: " );
       Clock clock2 = new Clock();
       System.out.println( "    New clock created: " + clock2.toString() );
@@ -195,8 +195,6 @@ public class Clock {
       System.out.print( "      sending '  60 seconds', expecting double value   60.0" );
       try { System.out.println( (60 == clock2.validateTimeSliceArg( "60" )) ? " - got a   60.0" : " - got " + clock2.slice ); }
       catch( Exception e ) { System.out.println ( " - Exception thrown: " + e.toString() ); }
-
-
       System.out.println( "  Creating a new clock3: " );
       Clock clock3 = new Clock();
       System.out.println( "    New clock created: " + clock3.toString() );
@@ -208,8 +206,6 @@ public class Clock {
       System.out.print( "      sending '  60000 seconds', expecting default value   60.0" );
       try { System.out.println( (60000 == clock3.validateTimeSliceArg( "60" )) ? " - got a   60000.0" : " - got " + clock3.slice ); }
       catch( Exception e ) { System.out.println ( " - Exception thrown: " + e.toString() ); }
-
-
       System.out.println( "  Creating a new clock4: " );
       Clock clock4 = new Clock();
       System.out.println( "    New clock created: " + clock4.toString() );
@@ -221,8 +217,6 @@ public class Clock {
       System.out.print( "      sending '  -1 seconds', expecting default value   60.0" );
       try { System.out.println( (-1 == clock4.validateTimeSliceArg( "-1" )) ? " - got a   -1" : " - got" + clock4.slice ); }
       catch( Exception e ) { System.out.println ( " - Exception thrown: " + e.toString() ); }
-
-
       System.out.println( "  Creating a new clock5: " );
       Clock clock5 = new Clock();
       System.out.println( "    New clock created: " + clock5.toString() );
@@ -234,8 +228,6 @@ public class Clock {
       System.out.print( "      sending '  beans', expecting default value   60.0" );
       try { System.out.println( (-1 == clock5.validateTimeSliceArg( "beans" )) ? " - got a   -1" : " - got" + clock5.slice ); }
       catch( Exception e ) { System.out.println ( " - Exception thrown: " + e.toString() ); }
-
-
       System.out.println( "  Creating a new clock5: " );
       Clock clock6 = new Clock();
       System.out.println( "    New clock created: " + clock6.toString() );
