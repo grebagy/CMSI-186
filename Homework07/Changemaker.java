@@ -85,13 +85,14 @@ public class Changemaker {
             for (int j = 0; j <= amount; j++) {
                 table[i][j] = new Tuple(dl);
                 System.out.println("\n  box # " + i + "," + j + " at " + denominations[i] + " to " + amount);
-                System.out.println("l: " + table[i][j].toString());
+                System.out.println("line: " + table[i][j].toString());
                 if (j == 0) {
                 } else {
-
+//add and +1 code
                     if (denominations[i] <= j && table[i][j-denominations[i]] != Tuple.IMPOSSIBLE) {
                         table[i][j].setElement(i, 1);
                         table[i][j] = table[i][j].add(table[i][j-denominations[i]]);
+
                         if (i>1 && table[i][j].total() > table[i-1][j].total()) {
                           table[i][j] = table[i-1][j];  
                         }
@@ -102,10 +103,6 @@ public class Changemaker {
                         table[i][j] = table[i-1][j];
                     }
                 }
-                System.out.print("{");
-                for (int k = 0; k < dl; k++)
-                System.out.print("," + table[i][j].getElement(k) + ",");
-                System.out.print("}");
             }
         }
         Tuple result = new Tuple(dl);
