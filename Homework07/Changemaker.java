@@ -18,6 +18,7 @@
  *                                    express permission and blessing; just added this comment block
  *  1.0.1  2017-04-25  Greg Ebert    Haha what am i doing
  *  1.1.0  2017-04-27  Greg Ebert    things should be working but they arent.
+ *  1.2.0  2017-04-27  Greg Ebert    everything is functional, just need to add javadocs. its been 7 hours.
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 public class Changemaker {
 
@@ -84,28 +85,28 @@ public class Changemaker {
         for (int i = 0; i < dl; i++) {
             for (int j = 0; j <= amount; j++) {
                 table[i][j] = new Tuple(dl);
-                System.out.println("\n  box # " + i + "," + j + " at " + denominations[i] + " to " + amount);
-                System.out.println("line: " + table[i][j].toString());
+                //System.out.println("\n  box # " + i + "," + j + " at " + denominations[i] + " to " + amount);
+                //System.out.println("line1: " + table[i][j].toString());
                 if (j == 0) {
                 } else {
-//add and +1 code
                     if (denominations[i] <= j && table[i][j-denominations[i]] != Tuple.IMPOSSIBLE) {
                         table[i][j].setElement(i, 1);
-                        table[i][j] = table[i][j].add(table[i][j-denominations[i]]);
-
-                        if (i>1 && table[i][j].total() > table[i-1][j].total()) {
-                          table[i][j] = table[i-1][j];  
-                        }
+                        table[i][j] = table[i][j].add(table[i][j - denominations[i]]);
                     } else {
                         table[i][j] = Tuple.IMPOSSIBLE;
+                    }
+                    if (i>0 && table[i][j] != Tuple.IMPOSSIBLE && table[i-1][j] != Tuple.IMPOSSIBLE && table[i][j].total() > table[i - 1][j].total()) {
+                        table[i][j] = table[i-1][j];  
                     }
                     if (table[i][j] == Tuple.IMPOSSIBLE && i>0 && table[i-1][j] != Tuple.IMPOSSIBLE) {
                         table[i][j] = table[i-1][j];
                     }
                 }
+                //System.out.println("line2: " + table[i][j].toString());
             }
         }
         Tuple result = new Tuple(dl);
+        //System.out.println("line: " + table[dl-1][amount].toString());
         result = table[dl-1][amount];
         return result;
     }
